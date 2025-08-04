@@ -1,0 +1,489 @@
+/* Global Styles */
+.App {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.App-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+}
+
+.App h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.App h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 15px 0;
+  color: #e8f4fd;
+}
+
+.App p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #b8d4f0;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Timer Styles */
+.timer {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 20px 0;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border-radius: 25px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  min-width: 200px;
+}
+
+.timer-warning {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 4px 20px rgba(231,76,60,0.4);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(231,76,60,0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(231,76,60,0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(231,76,60,0.4);
+  }
+}
+
+/* Watching/Waiting States */
+.watching-window {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+}
+
+.watching-window h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.watching-status {
+  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 25px 0;
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.watching-message {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 500;
+}
+
+.queue-position {
+  font-weight: 700;
+  color: #00b894;
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Game End Messages */
+.end-message {
+  background: rgba(255,255,255,0.9);
+  color: #2c3e50;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Special styling for result messages */
+.result-message {
+  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 25px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.3);
+  animation: celebrate 0.6s ease-out;
+}
+
+.result-message.incorrect {
+  background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+  box-shadow: 0 6px 20px rgba(225, 112, 85, 0.3);
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Button Styles */
+.button-container {
+  margin: 30px 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button-container button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  min-width: 140px;
+}
+
+.button-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #357abd 0%, #2968a3 100%);
+}
+
+.button-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Chat Window Styles */
+.chat-window {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+}
+
+.chat-window h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Messages Container */
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 1px solid #e9ecef;
+}
+
+/* Message Bubbles */
+.message {
+  display: flex;
+  margin: 12px 0;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.message.you {
+  justify-content: flex-end;
+}
+
+.message.you .message-content {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  border-radius: 18px 18px 5px 18px;
+  max-width: 70%;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.message.tested_person .message-content,
+.message.ai .message-content {
+  background: white;
+  color: #2c3e50;
+  border-radius: 18px 18px 18px 5px;
+  max-width: 70%;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #e9ecef;
+}
+
+.message.system .message-content {
+  background: #ffeaa7;
+  color: #2d3436;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-style: italic;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 80%;
+}
+
+.message strong {
+  display: none; /* Hide the "sender:" labels since we have bubbles */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input Form */
+.chat-window form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.chat-window input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.chat-window input[type="text"]:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.chat-window button[type="submit"] {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chat-window button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.chat-window button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Guess Buttons */
+.guess-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.guess-buttons button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.guess-buttons button:first-child {
+  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+.guess-buttons button:last-child {
+  background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(225, 112, 85, 0.3);
+}
+
+.guess-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-header {
+    padding: 15px;
+  }
+  
+  .App h1 {
+    font-size: 2rem;
+  }
+  
+  .App h2 {
+    font-size: 1.5rem;
+  }
+  
+  .chat-window,
+  .watching-window {
+    margin: 10px;
+    padding: 20px;
+    max-width: none;
+  }
+  
+  .messages {
+    max-height: 300px;
+    padding: 15px;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button-container button {
+    width: 200px;
+    margin: 5px 0;
+  }
+  
+  .guess-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .guess-buttons button {
+    width: 160px;
+    margin: 8px 0;
+  }
+  
+  .timer {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    min-width: 180px;
+  }
+}
+
+/* Loading Animation */
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #666;
+  font-style: italic;
+}
+
+.typing-dots {
+  display: flex;
+  margin-left: 8px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #666;
+  margin: 0 2px;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Scrollbar Styling */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
